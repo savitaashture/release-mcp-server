@@ -66,9 +66,6 @@ create release branches for 1.21 version
 
 2. Configure Hack Repository:
 ```bash
-# Set required environment variables
-export GITLAB_USERNAME="your-username"
-export GITLAB_TOKEN="your-token"
 
 configure hack repo for 1.21 minorversion for the component name tektoncd-chains with upstream version release-v0.24.x, tektoncd-git-clone with upstream version release-v1.0.x, operator with upstream version release-v0.76.x, pac-downstream with upstream version release-v0.35.x, tektoncd-cli with upstream version release-v0.40.0, tektoncd-hub with upstream version release-v1.20.0, tektoncd-results with upstream version release-v0.14.x, tektoncd-triggers with upstream version release-v0.31.x, tektoncd-pipeline with upstream version release-v1.0.x, manual-approval-gate with version release-v0.5.0, tekton-caches with version release-v0.1.x, tektoncd-pruner with version release-v0.2.x
 ```
