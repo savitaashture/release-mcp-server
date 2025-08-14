@@ -8,6 +8,7 @@ import (
 
 	"github.com/modelcontextprotocol/go-sdk/jsonschema"
 	mcp "github.com/modelcontextprotocol/go-sdk/mcp"
+	"time"
 )
 
 func Add(_ context.Context, s *mcp.Server) error {
@@ -94,7 +95,7 @@ func Add(_ context.Context, s *mcp.Server) error {
 			}
 		}
 
-		repoPath := filepath.Join(os.TempDir(), "hack-repo")
+		repoPath := filepath.Join(os.TempDir(), fmt.Sprintf("hack-repo-%d", time.Now().Unix()))
 
 		config := HackConfig{
 			MinorVersion:   minorVersion,

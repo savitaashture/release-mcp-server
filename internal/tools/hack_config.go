@@ -64,25 +64,25 @@ type BranchConfig struct {
 
 // ComponentMapping maps repository names to their component names
 var componentMapping = map[string]string{
-	"tektoncd-pipeline":    "pipeline",
-	"tektoncd-chains":      "chains",
-	"tektoncd-git-clone":   "git-init",
+	"tektoncd-pipeline":    "tektoncd-pipeline",
+	"tektoncd-chains":      "tektoncd-chains",
+	"tektoncd-git-clone":   "tektoncd-git-clone",
 	"operator":             "operator",
-	"pac-downstream":       "pac",
-	"tektoncd-cli":         "cli",
-	"tektoncd-hub":         "hub",
-	"tektoncd-results":     "results",
-	"tektoncd-triggers":    "triggers",
+	"pac-downstream":       "pac-downstream",
+	"tektoncd-cli":         "tektoncd-cli",
+	"tektoncd-hub":         "tektoncd-hub",
+	"tektoncd-results":     "tektoncd-results",
+	"tektoncd-triggers":    "tektoncd-triggers",
 	"manual-approval-gate": "manual-approval-gate",
-	"tekton-caches":        "cache",
-	"tektoncd-pruner":      "pruner",
+	"tekton-caches":        "tekton-caches",
+	"tektoncd-pruner":      "tektoncd-pruner",
 }
 
 // Special components that use version as branch name
 var specialComponents = map[string]bool{
 	"manual-approval-gate": true,
-	"cache":                true,
-	"pruner":               true,
+	"tekton-caches":        true,
+	"tektoncd-pruner":      true,
 }
 
 func createBranchConfig(minorVersion string, repoName string, hasUpstream bool, upstreamVersions map[string]string) BranchConfig {
@@ -111,7 +111,8 @@ func createBranchConfig(minorVersion string, repoName string, hasUpstream bool, 
 		Versions: []string{minorVersion},
 	}
 
-	// Set upstream version if component has upstream
+	// If the repository has upstream defined at the top level,
+	// we should include the upstream field in the branch config
 	if hasUpstream {
 		if upstreamVersion, ok := upstreamVersions[componentName]; ok {
 			branchConfig.Upstream = upstreamVersion
